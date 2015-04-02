@@ -1,7 +1,7 @@
 // 请将 AppId 改为你自己的 AppId
-var appId = '9p6hyhh60av3ukkni3i9z53q1l8yy3cijj6sie3cewft18vm';
+var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';
 // 每个客户端自定义的 id
-var clientId = 'LeanCloud111';
+var clientId = 'SiXinWenUser';
 
 var rt;
 var conv;
