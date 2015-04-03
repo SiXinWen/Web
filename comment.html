@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" ng-app="">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -128,7 +128,7 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 				</div>
 
 			</div>
-			<div id="discuss" style="height:90%;border:2px solid;border-radius:10px;">
+			<div id="discuss" style="overflow: auto;height:320px;border:2px solid;border-radius:10px;">
 				<a href="#">Ontime</a>
 				|
 				<a href="#">Hot</a>
@@ -183,6 +183,7 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 				</div>
 
 
+
 				<div class="media">
 					<div class="media-body" >
 						<div class="rightbubblebox">
@@ -203,7 +204,7 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 			<div style="border:2px solid;border-radius:10px;">
 				<h3>What's your opinion?</h3>
 				<form role="form" >
-					<textarea class="form-control" style="width:95%;margin:15px 15px 0px 15px;resize:none" placeholder="Enter your opinion here..." rows="2" ></textarea>
+					<textarea id="new-msg" class="form-control" style="width:95%;margin:15px 15px 0px 15px;resize:none" placeholder="Enter your opinion here..." rows="2" ></textarea>
 					<br/>
 					<div style="margin: 0px 10px 0px 20px">
 						<input type="radio" name="side" value="yes">
@@ -212,17 +213,22 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 						反方
 						<input type="checkbox" name="anonymous">
 						匿名
-						<button type="submit" class="btn btn-default pull-right" >提交</button>
+						<a id="send-btn" type="submit" class="btn btn-default pull-right" >提交</a>
 					</div>
 				</form>
 				<br/>
 			</div>
 		</div>
 	</div>
+
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--script src="http://www.w3cschool.cc/try/angularjs/1.2.5/angular.min.js"></script-->
+<script src="https://leancloud.cn/scripts/lib/av-0.5.1.min.js"></script>
+	<script src="js/AV.realtime.js"></script>
+	<script src="js/run.js"></script>
 </body>
 </html>
