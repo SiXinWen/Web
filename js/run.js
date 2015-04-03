@@ -27,7 +27,7 @@ function main() {
 
     if (firstFlag) {
         // 当前 SDK 版本
-        showLog('欢迎使用 LeanCloud 实时通信，当前 SDK 版本是 ' + AV.realtime.version);
+  //      showLog('欢迎使用 LeanCloud 实时通信，当前 SDK 版本是 ' + AV.realtime.version);
     }
     // 实时通信服务连接成功
     rt.on('open', function() {
