@@ -1,6 +1,9 @@
- 
+<<<<<<< HEAD
+AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
+=======
+  
   AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
-
+>>>>>>> f1a09edb9e055075520d821b752bfd6b5f72c5ba
   var News = AV.Object.extend("News");
 
 // 初始化 param1：应用 id、param2：应用 key
