@@ -386,7 +386,7 @@ comment.save(null, {
     alert('Failed to create new object, with error code: ' + error.message);
   }
 });
-//add to Database end
+
 
         showLog(val);
         var dom = document.getElementById('discuss');
