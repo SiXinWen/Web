@@ -71,7 +71,7 @@
 		<div id="news" class="col-md-4" style="margin:0px;padding:0px">
 			<div class="hero-unit">
 				<h1 id="newsHead">三十个糟糕程序员抵不过一款好工具</h1>
-				<img src="http://cms.csdnimg.cn/article/201401/24/52e20a0dddce3.jpg" alt="..." class="img-rounded" style="width:80%;height:auto;">
+				<img id="newsPic" src="http://cms.csdnimg.cn/article/201401/24/52e20a0dddce3.jpg" alt="..." class="img-rounded" style="width:80%;height:auto;">
 				<p id="newsContent">
 					1. IDE：钟情于VC++6.0，但是也感觉Visual Studio2008,2010的强.可能迟早得转到VS高版本上来。在安装VC++6.0的时候记得安装sp6补丁和msdn（MSDN_1.5_精简安装)
 					<br/>
@@ -207,7 +207,7 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 					<textarea id="new-msg" class="form-control" style="width:95%;margin:15px 15px 0px 15px;resize:none" placeholder="Enter your opinion here..." rows="2" ></textarea>
 					<br/>
 					<div style="margin: 0px 10px 0px 20px">
-						<input type="radio" name="side" value="yes">
+						<input id="Support" type="radio" name="side" value="yes">
 						正方
 						<input type="radio" name="side" value="no">
 						反方
