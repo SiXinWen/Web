@@ -267,7 +267,7 @@ function authFun(options, callback) {
 }
 
 // demo 中输出代码
-function showLog(msg, data) {
+function showLog(msg, data,at) {
    console.log('show log');
     if (data) {
    //     alert('success data');
@@ -284,11 +284,23 @@ function showLog(msg, data) {
  //   console.log(div)
  //   var p = document.createElement('p');
  //   p.innerHTML = msg;
+    if(arguments.length>2)
+    {
+    if(arguments[2]==true)
+    {
     new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
      'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
      '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg + 
      '</h4></div></div></div></div>'
     div.innerHTML += new_div;
+    }
+    else
+    {
+    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
+    div.innerHTML += new_div;
+
+    }
+    }
 }
 
 //var openBtn = document.getElementById('open-btn');
@@ -362,7 +374,9 @@ function sendMsg() {
     var input = document.getElementById('new-msg');
     var val = input.value;
     //side
-
+    var atitude = document.getElementById('Support');
+    var bAtitude = new Boolean();
+    bAtitude = atitude.checked;
 
 console.log(convOld);
 /*while(1){}*/
@@ -375,6 +389,7 @@ AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg
 var Comments = AV.Object.extend("Comments");
 var comment = new Comments();
 comment.set("Content",val);
+comment.set("Atitude",bAtitude);
 comment.save(null, {
   success: function(comment) {
     // Execute any logic that should take place after the object is saved.
@@ -387,8 +402,8 @@ comment.save(null, {
   }
 });
 //add to Database end
-
-        showLog(val);
+        alert(bAtitude);
+        showLog(val,'',bAtitude);
         var dom = document.getElementById('discuss');
         dom.scrollTop = dom.scrollHeight;
         console.log('****************sendMsg 4');
