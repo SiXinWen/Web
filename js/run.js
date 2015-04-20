@@ -114,6 +114,7 @@ function main() {
         // 向这个 Conversation 中发送消息
         conv.send({
             abc: 123
+
         }, function(data) {
             console.log('发送的消息服务端已收收到：', data);
 
@@ -284,22 +285,32 @@ function showLog(msg, data,at) {
  //   console.log(div)
  //   var p = document.createElement('p');
  //   p.innerHTML = msg;
+    //alert(msg);
     if(arguments.length>2)
     {
-    if(arguments[2]==true)
-    {
+        if(arguments[2]==true)
+        {
     new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
      'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
      '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg + 
      '</h4></div></div></div></div>'
     div.innerHTML += new_div;
-    }
-    else
-    {
+        }
+        else
+        {
     new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
     div.innerHTML += new_div;
 
+        }
     }
+    else
+    {
+        //alert("here");
+        new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
+   	  'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
+   	  '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg + 
+   	  '</h4></div></div></div></div>'
+        div.innerHTML += new_div;
     }
 }
 
@@ -355,6 +366,7 @@ function createNewRoom(id) {
     convOld.receive(function(data) {
         console.log(data);
         var text = '';
+        alert("get one message\n");
         if (data.msg.test) {
             text = data.msg.test;
         } else {
@@ -384,6 +396,8 @@ console.log(convOld);
         test: val
     }, function(data) {
         input.value = '';
+
+
 //add to Database Comments
 AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
 var Comments = AV.Object.extend("Comments");
@@ -402,6 +416,8 @@ comment.save(null, {
   }
 });
 //add to Database end
+
+
         alert(bAtitude);
         showLog(val,'',bAtitude);
         var dom = document.getElementById('discuss');
