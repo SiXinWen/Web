@@ -14,136 +14,98 @@ function goBottom () {
     var dom = document.getElementById('discuss');
     dom.scrollTop = dom.scrollHeight;
 }
-// Demo 中聊天相关的主逻辑
 function main() {
     goBottom();
-
-    // 创建聊天实例（支持单页多实例）
     rt = AV.realtime({
         appId: appId,
-        // appId: 'pyon3kvufmleg773ahop2i7zy0tz2rfjx5bh82n7h5jzuwjg',
         clientId: clientId
         // 是否开启服务器端认证
         // auth: authFun
     });
 
     if (firstFlag) {
-        // 当前 SDK 版本
-  //      showLog('欢迎使用 LeanCloud 实时通信，当前 SDK 版本是 ' + AV.realtime.version);
     }
-    // 实时通信服务连接成功
+
     rt.on('open', function() {
-
-            console.log('open');
-        //showLog('实时通信服务建立成功！');
-
+        console.log('open');
         // 因为断开重连还会触发一次 open 事件，所以用一个状态标记下
         if (firstFlag) {
             firstFlag = false;
-
-            // 创建一个聊天室
             if (roomId){
-            convOld = rt.conv(roomId, function() {
-                console.log('已经获取已有房间的实例');
-            });
+            convOld = rt.conv(roomId, function(){console.log('已经获取已有房间的实例');});
         }else{
-           convOld = rt.conv({
-    // 人员的 id
-    members: [
-        'LeanCloud02'
-    ],
-    // 创建暂态的聊天室
-    // transient: true,
-    // 默认的数据，可以放 Conversation 名字等
-    data: {
-        title: 'testTitle'
+            convOld = rt.conv({
+                members: [],
+                data: {title: 'testTitle'}
+            }, function(result) {
+                console.log('Conversation created callback');
+            }); 
+        }
+
+        convOld.join(function() {
+            convOld.list(function(data) {});
+        });
+
+        convOld.receive(function(data) {
+            console.log(data);
+            var text = '';
+            if (data.msg.test) {
+                text = data.msg.test;
+            } else {
+                text = JSON.stringify(data.msg);
+            }
+            showLog(text, data.msg.atitudeVal);
+            goBottom();
+        });
+
+        rt.ping(['LeanCloud111','LeanCloud02'], function(data) {
+            console.log('查询用户在线状态：', data);
+        });
+
+        console.log('before query');
+        rt.query(function(data) {
+            console.log('查询 Conversation 所有相关信息：', data);
+        });
+
     }
-}, function(result) {
-    console.log('Conversation created callback');
-}); 
-        }
-
-           // showLog('房间的 id:  ' + convOld.id);
-            convOld.join(function() {
-                convOld.list(function(data) {
-                    //showLog('当前 Conversation 的成员列表：', data);
-                });
-            });
-            convOld.receive(function(data) {
-                console.log(data);
-                var text = '';
-                if (data.msg.test) {
-                    text = data.msg.test;
-                } else {
-                    text = JSON.stringify(data.msg);
-                }
-                showLog(text, data.msg.atitudeVal);
-                goBottom();
-            });
-          
-            
-
-            // 查询对应 clientId 的用户是否处于在线状态
-            rt.ping([
-                'LeanCloud111',
-                'LeanCloud02'
-            ], function(data) {
-                console.log('查询用户在线状态：', data);
-            });
-
-            console.log('before query');
-            rt.query(function(data) {
-                console.log('查询 Conversation 所有相关信息：', data);
-            });
-           // bindReceive();
-
-        }
     });
 
-    // 当聊天断开时触发
     rt.on('close', function() {
         console.log('close');
         console.log('实时通信服务被断开！');
     });
 
-    // 当 Conversation 被创建时触发，当然您可以使用回调函数来处理，不一定要监听这个事件
     rt.on('create', function(data) {
         console.log('create');
-        // 当前用户加入这个 Conversation 
+
         conv.join(function(data) {
             console.log('当前用户成功加入 Conversation');
         });
-        // 向这个 Conversation 添加新的用户
+
         conv.add([
             'LeanCloud03', 'LeanCloud04'
         ], function(data) {
             console.log('成功添加用户：', data);
         });
 
-        // 从这个 Conversation 中删除用户
         conv.remove('LeanCloud03', function(data) {
             console.log('成功删除用户：', data);
         });
 
-        // 当前用户离开这个 Conversation 
         conv.leave(function(data) {
             console.log('当前用户成功离开 Conversation');
         });
 
-        // 向这个 Conversation 中发送消息
         conv.send({
             abc: 123
 
         }, function(data) {
             console.log('发送的消息服务端已收收到：', data);
-
-            // 查看历史消息
             conv.log(function(data) {
                 console.log('查看当前 Conversation 最近的聊天记录：', data);
             });
         });
 
-        // 向这个 Conversation 中发送暂态消息
         conv.send({
             msg: '当前用户正在输入。。。'
         }, {
@@ -288,35 +250,22 @@ function authFun(options, callback) {
 
 // demo 中输出代码
 function showLog(msg_text, at) {
-   console.log('show log');
+    console.log('show log');
     console.log(msg_text);
     console.log(at);
-    
-
     //cqy
-
     var div = document.getElementById('discuss');
- //   console.log(div)
- //   var p = document.createElement('p');
-
- //   p.innerHTML = msg_text;
-
     if(arguments.length==2)
     {
-        if(arguments[1]==true)
-        {
-    new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
+        if(arguments[1]==true){
+            new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
      'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
      '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg_text + 
      '</h4></div></div></div></div>'
-    div.innerHTML += new_div;
-
-        }
-        else
-        {
-    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
-    div.innerHTML += new_div;
-
+            div.innerHTML += new_div;
+        }else{
+            new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
+            div.innerHTML += new_div;
         }
     }else{
         console.log("bad arguments.");
@@ -324,27 +273,10 @@ function showLog(msg_text, at) {
 
 }
 
-//var openBtn = document.getElementById('open-btn');
 var sendBtn = document.getElementById('send-btn');
-//var changeIdBtn = document.getElementById('change-id-btn');
-//var changeNameBtn = document.getElementById('change-name-btn');
 
-/*openBtn.addEventListener('click', function() {
-    var val = document.getElementById('input-appId').value;
-    if (val) {
-        appId = val;
-    }
-    main();
-});*/
 main();
 sendBtn.addEventListener('click', sendMsg);
-/*
-changeIdBtn.addEventListener('click', function() {
-    var id = document.getElementById('input-cid').value;
-    createNewRoom(id);
-    alert('修改 Room id 成功！');
-});
-*/
 
 function bindReceive() {
     console.log('bindReceive');
@@ -400,36 +332,31 @@ function sendMsg() {
     var bAtitude = new Boolean();
     bAtitude = atitude.checked;
 
-console.log(convOld);
-/*while(1){}*/
+    console.log(convOld);
     convOld.send({
         test: val,
-	atitudeVal:bAtitude
+	    atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
-
-
-//add to Database Comments
-AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
-var Comments = AV.Object.extend("Comments");
-var comment = new Comments();
-comment.set("Content",val);
-comment.set("Atitude",bAtitude);
-comment.save(null, {
-  success: function(comment) {
-    // Execute any logic that should take place after the object is saved.
-    alert('New object created with objectId: ' + comment.id);
-  },
-  error: function(gameScore, error) {
-    // Execute any logic that should take place if the save fails.
-    // error is a AV.Error with an error code and description.
-    alert('Failed to create new object, with error code: ' + error.message);
-  }
-});
-//add to Database end
-
-
-        alert(bAtitude);
+        //add to Database Comments
+        AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
+        var Comments = AV.Object.extend("Comments");
+        var comment = new Comments();
+        comment.set("Content",val);
+        comment.set("Atitude",bAtitude);
+        comment.save(null, {
+            success: function(comment) {
+                // Execute any logic that should take place after the object is saved.
+                //alert('New object created with objectId: ' + comment.id);
+            },
+            error: function(gameScore, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a AV.Error with an error code and description.
+                alert('Failed to create new object, with error code: ' + error.message);
+            }
+        });
+        //add to Database end
+        //alert(bAtitude);
         showLog(val,bAtitude);
         var dom = document.getElementById('discuss');
         dom.scrollTop = dom.scrollHeight;
@@ -437,6 +364,7 @@ comment.save(null, {
     });
     console.log('****************sendMsg 2');
 }
+
 
 document.body.addEventListener('keydown', function(e) {
     if (e.keyCode === 13) {
