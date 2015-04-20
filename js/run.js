@@ -1,6 +1,8 @@
 // 请将 AppId 改为你自己的 AppId
-var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';
-var roomId = '551d5796e4b07fed3216c256'
+//var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';//cqy
+//var roomId = '551d5796e4b07fed3216c256'
+var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
+var roomId = '55350a17e4b078a9070ddea4';
 // 每个客户端自定义的 id
 var clientId = 'SiXinWenUser';
 var rt;
@@ -40,10 +42,27 @@ function main() {
             firstFlag = false;
 
             // 创建一个聊天室
-
+            if (roomId){
             convOld = rt.conv(roomId, function() {
                 console.log('已经获取已有房间的实例');
             });
+        }else{
+           convOld = rt.conv({
+    // 人员的 id
+    members: [
+        'LeanCloud02'
+    ],
+    // 创建暂态的聊天室
+    // transient: true,
+    // 默认的数据，可以放 Conversation 名字等
+    data: {
+        title: 'testTitle'
+    }
+}, function(result) {
+    console.log('Conversation created callback');
+}); 
+        }
+
            // showLog('房间的 id:  ' + convOld.id);
             convOld.join(function() {
                 convOld.list(function(data) {
