@@ -58,7 +58,7 @@ function main() {
                 } else {
                     text = JSON.stringify(data.msg);
                 }
-                showLog('朋友（' + data.fromPeerId + '）：', text);
+                showLog('wode朋友（' + data.fromPeerId + '）：', text);
                 goBottom();
             });
           
@@ -272,10 +272,11 @@ function showLog(msg, data,at) {
     if (data) {
    //     alert('success data');
         console.log(msg, data);
-        msg = msg + '<span class="strong">' + JSON.stringify(data) + '</span>';
+        msg_text = msg + '<span class="strong">' + JSON.stringify(data) + '</span>';
+        msg_atitude = msg.atitudeVal;
     } else {
   //      alert('success ,sg');
-        console.log(msg);
+        console.log(msg_text);
     }
 
     //cqy
@@ -283,22 +284,21 @@ function showLog(msg, data,at) {
     var div = document.getElementById('discuss');
  //   console.log(div)
  //   var p = document.createElement('p');
- //   p.innerHTML = msg;
+ //   p.innerHTML = msg_text;
     if(arguments.length>2)
     {
     if(arguments[2]==true)
     {
     new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
      'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
-     '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg + 
+     '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg_text + 
      '</h4></div></div></div></div>'
     div.innerHTML += new_div;
     }
     else
     {
-    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
+    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
     div.innerHTML += new_div;
-
     }
     }
 }
@@ -382,6 +382,7 @@ console.log(convOld);
 /*while(1){}*/
     convOld.send({
         test: val
+	atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
 //add to Database Comments

@@ -58,7 +58,7 @@ function main() {
                 } else {
                     text = JSON.stringify(data.msg);
                 }
-                showLog('朋友（' + data.fromPeerId + '）：', text);
+                showLog('wode朋友（' + data.fromPeerId + '）：', text);
                 goBottom();
             });
           
@@ -298,7 +298,6 @@ function showLog(msg, data,at) {
     {
     new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
     div.innerHTML += new_div;
-
     }
     }
 }
@@ -382,6 +381,7 @@ console.log(convOld);
 /*while(1){}*/
     convOld.send({
         test: val
+	atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
 //add to Database Comments
