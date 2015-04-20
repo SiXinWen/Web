@@ -58,7 +58,7 @@ function main() {
                 } else {
                     text = JSON.stringify(data.msg);
                 }
-                showLog('wode朋友（' + data.fromPeerId + '）：', text);
+                showLog(text, data.msg.atitudeVal);
                 goBottom();
             });
           
@@ -268,17 +268,11 @@ function authFun(options, callback) {
 }
 
 // demo 中输出代码
-function showLog(msg, data,at) {
+function showLog(msg_text, at) {
    console.log('show log');
-    if (data) {
-   //     alert('success data');
-        console.log(msg, data);
-        msg_text = msg + '<span class="strong">' + JSON.stringify(data) + '</span>';
-        msg_atitude = msg.atitudeVal;
-    } else {
-  //      alert('success ,sg');
-        console.log(msg_text);
-    }
+    console.log(msg_text);
+    console.log(at);
+    
 
     //cqy
 
@@ -288,9 +282,9 @@ function showLog(msg, data,at) {
 
  //   p.innerHTML = msg_text;
 
-    if(arguments.length>2)
+    if(arguments.length==2)
     {
-        if(arguments[2]==true)
+        if(arguments[1]==true)
         {
     new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
      'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
@@ -305,16 +299,10 @@ function showLog(msg, data,at) {
     div.innerHTML += new_div;
 
         }
+    }else{
+        console.log("bad arguments.");
     }
-    else
-    {
-        //alert("here");
-        new_div = '<div class="media"><div class="media-left"><a href="#"><img class="media-object" style="width:40px" '+
-   	  'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+
-   	  '</div><div class="media-body"><div class="leftbubblebox"><div class="left"><h4 class="media-heading" >' +msg_text + 
-   	  '</h4></div></div></div></div>'
-        div.innerHTML += new_div;
-    }
+
 }
 
 //var openBtn = document.getElementById('open-btn');
@@ -375,7 +363,7 @@ function createNewRoom(id) {
         } else {
             text = JSON.stringify(data.msg);
         }
-        showLog('朋友（' + data.fromPeerId + '）：', text);
+        showLog(text, data.msg.atitudeVal);
     });
 }
 
@@ -396,7 +384,7 @@ function sendMsg() {
 console.log(convOld);
 /*while(1){}*/
     convOld.send({
-        test: val
+        test: val,
 	atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
@@ -423,7 +411,7 @@ comment.save(null, {
 
 
         alert(bAtitude);
-        showLog(val,'',bAtitude);
+        showLog(val,bAtitude);
         var dom = document.getElementById('discuss');
         dom.scrollTop = dom.scrollHeight;
         console.log('****************sendMsg 4');
