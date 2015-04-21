@@ -1,8 +1,13 @@
 // 请将 AppId 改为你自己的 AppId
+<<<<<<< HEAD
 //var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';//cqy
 //var roomId = '551d5796e4b07fed3216c256'
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
 var roomId = '55350a17e4b078a9070ddea4';
+=======
+var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
+var roomId = '5535e6d7e4b078a907134b77'
+>>>>>>> chenqingying
 // 每个客户端自定义的 id
 var clientId = 'SiXinWenUser';
 var rt;
@@ -336,28 +341,32 @@ function sendMsg() {
     console.log(convOld);
     convOld.send({
         test: val,
-	    atitudeVal:bAtitude
+    atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
-        //add to Database Comments
-        AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
-        var Comments = AV.Object.extend("Comments");
-        var comment = new Comments();
-        comment.set("Content",val);
-        comment.set("Atitude",bAtitude);
-        comment.save(null, {
-            success: function(comment) {
-                // Execute any logic that should take place after the object is saved.
-                //alert('New object created with objectId: ' + comment.id);
-            },
-            error: function(gameScore, error) {
-                // Execute any logic that should take place if the save fails.
-                // error is a AV.Error with an error code and description.
-                alert('Failed to create new object, with error code: ' + error.message);
-            }
-        });
-        //add to Database end
-        //alert(bAtitude);
+
+
+//add to Database Comments
+AV.initialize("epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh", "xjgx65z5yavhg8nj4r48004prjelkq0fzz9xgricyb2nh0qq");
+var Comments = AV.Object.extend("Comments");
+var comment = new Comments();
+comment.set("Content",val);
+comment.set("Atitude",bAtitude);
+comment.save(null, {
+  success: function(comment) {
+    // Execute any logic that should take place after the object is saved.
+ //   alert('New object created with objectId: ' + comment.id);
+  },
+  error: function(gameScore, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a AV.Error with an error code and description.
+    alert('Failed to create new object, with error code: ' + error.message);
+  }
+});
+//add to Database end
+
+
+   //     alert(bAtitude);
         showLog(val,bAtitude);
         var dom = document.getElementById('discuss');
         dom.scrollTop = dom.scrollHeight;
