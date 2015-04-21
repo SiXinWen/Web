@@ -1,13 +1,8 @@
 // 请将 AppId 改为你自己的 AppId
-<<<<<<< HEAD
 //var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';//cqy
 //var roomId = '551d5796e4b07fed3216c256'
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
 var roomId = '55350a17e4b078a9070ddea4';
-=======
-var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
-var roomId = '5535e6d7e4b078a907134b77'
->>>>>>> chenqingying
 // 每个客户端自定义的 id
 var clientId = 'SiXinWenUser';
 var rt;
