@@ -1,6 +1,6 @@
 // 请将 AppId 改为你自己的 AppId
-var appId = 't83prvknge71w5pwoml6pki143hgfx4ymxxqanhidyk2vfyk';
-var roomId = '551d5796e4b07fed3216c256'
+var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
+var roomId = '5535e6d7e4b078a907134b77'
 // 每个客户端自定义的 id
 var clientId = 'SiXinWenUser';
 var rt;
@@ -385,7 +385,7 @@ console.log(convOld);
 /*while(1){}*/
     convOld.send({
         test: val,
-	atitudeVal:bAtitude
+    atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
 
@@ -399,7 +399,7 @@ comment.set("Atitude",bAtitude);
 comment.save(null, {
   success: function(comment) {
     // Execute any logic that should take place after the object is saved.
-    alert('New object created with objectId: ' + comment.id);
+ //   alert('New object created with objectId: ' + comment.id);
   },
   error: function(gameScore, error) {
     // Execute any logic that should take place if the save fails.
@@ -410,7 +410,7 @@ comment.save(null, {
 //add to Database end
 
 
-        alert(bAtitude);
+   //     alert(bAtitude);
         showLog(val,bAtitude);
         var dom = document.getElementById('discuss');
         dom.scrollTop = dom.scrollHeight;
