@@ -49,6 +49,7 @@ function main() {
         convOld.receive(function(data) {
             console.log(data);
             var text = '';
+            console.log('nice')
             if (data.msg.test) {
                 text = data.msg.test;
             } else {
