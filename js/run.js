@@ -1,6 +1,6 @@
 // 请将 AppId 改为你自己的 AppId
 var appId = 'epg58oo2271uuupna7b9awz9nzpcxes870uj0j0rzeqkm8mh';
-var roomId = '5535e6d7e4b078a907134b77'
+var roomId = '5535e6dde4b078a907134b9f'
 // 每个客户端自定义的 id
 var clientId = 'SiXinWenUser';
 var rt;
@@ -41,9 +41,24 @@ function main() {
 
             // 创建一个聊天室
 
-            convOld = rt.conv(roomId, function() {
-                console.log('已经获取已有房间的实例');
-            });
+            if (roomId){
+                convOld = rt.conv(roomId, function() {
+                    console.log('已经获取已有房间的实例');
+                });
+            }else{
+                convOld = rt.conv({
+                    members: ['LeanCloud02'],
+                    // 创建暂态的聊天室
+                    // transient: true,
+                    // 默认的数据，可以放 Conversation 名字等
+                    data: {
+                        title: 'testTitle'
+                    }
+                }, function(result) {
+                    console.log('Conversation created callback');
+                });
+            }
+
            // showLog('房间的 id:  ' + convOld.id);
             convOld.join(function() {
                 convOld.list(function(data) {
@@ -53,8 +68,8 @@ function main() {
             convOld.receive(function(data) {
                 console.log(data);
                 var text = '';
-                if (data.msg.test) {
-                    text = data.msg.test;
+                if (data.msg.text) {
+                    text = data.msg.text;
                 } else {
                     text = JSON.stringify(data.msg);
                 }
@@ -384,8 +399,8 @@ function sendMsg() {
 console.log(convOld);
 /*while(1){}*/
     convOld.send({
-        test: val,
-    atitudeVal:bAtitude
+        text: val,
+        atitudeVal:bAtitude
     }, function(data) {
         input.value = '';
 
