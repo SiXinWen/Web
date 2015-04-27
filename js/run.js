@@ -267,6 +267,11 @@ function authFun(options, callback) {
     }, callback);
 }
 
+//LMX, against html injection attack
+function parse(msg_text){
+    var msg=msg_text
+    return msg.replace(/</g,"&lt").replace(/>/g,"&gt");
+}
 // demo 中输出代码
 function showLog(msg_text, at) {
    console.log('show log');
@@ -281,6 +286,7 @@ function showLog(msg_text, at) {
  //   var p = document.createElement('p');
 
  //   p.innerHTML = msg_text;
+    msg_text = parse(msg_text);
 
     if(arguments.length==2)
     {
@@ -295,7 +301,9 @@ function showLog(msg_text, at) {
         }
         else
         {
-    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+ 'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
+    new_div = '<div class="media"><div class="media-body"><div class="media-body"><div class="rightbubblebox"><div class="right"><h4 class="media-heading">'+
+    msg_text+'</h4></div></div></div></div>'+  '<div class="media-right"><a href="#"><img class="media-object" style="width:40px" '+
+     'src="http://c.hiphotos.baidu.com/image/pic/item/1e30e924b899a9010e11b6301e950a7b0208f594.jpg" alt="..."></a>'+'</div>';
     div.innerHTML += new_div;
 
         }

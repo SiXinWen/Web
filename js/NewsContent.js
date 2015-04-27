@@ -11,6 +11,7 @@
     //alert(content);
     document.getElementById("newsHead").innerHTML=title;
     document.getElementById("newsContent").innerHTML=content;
+    document.getElementById("modalContent").innerHTML=content;
     document.getElementById("newsPic").src="http://www.bioon.com/trends/UploadFiles/201312/2013122620053471.png";
     // The object was retrieved successfully.
   },

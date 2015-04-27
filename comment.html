@@ -55,7 +55,7 @@
 				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">home</a>
 				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">news</a>
 				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">me</a>
-				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">exit</a>
+				<a href="#a" style="display:block;float:left;margin:0px 10px 0px 10px;">logout</a>
 				<form class="form-search" >
 					<input type="text" class="form-control" style="float:left;width:70px;margin:0px 10px 0px 80px;">
 					<button type="submit" class="btn btn-default" style="float:left;width:70px;margin:0px;">Search</button>
@@ -70,9 +70,10 @@
 	<div class="row" style="margin:0px;padding:0px">
 		<div id="news" class="col-md-4" style="margin:0px;padding:0px">
 			<div class="hero-unit">
-				<h1 id="newsHead">三十个糟糕程序员抵不过一款好工具</h1>
-				<img id="newsPic" src="http://cms.csdnimg.cn/article/201401/24/52e20a0dddce3.jpg" alt="..." class="img-rounded" style="width:80%;height:auto;">
+				<h1 id="newsHead"><!--三十个糟糕程序员抵不过一款好工具--></h1>
+				<img id="newsPic" src="" alt="..." class="img-rounded" style="width:80%;height:auto;">
 				<p id="newsContent">
+				<!--
 					1. IDE：钟情于VC++6.0，但是也感觉Visual Studio2008,2010的强.可能迟早得转到VS高版本上来。在安装VC++6.0的时候记得安装sp6补丁和msdn（MSDN_1.5_精简安装)
 					<br/>
 					2. 辅助
@@ -81,6 +82,7 @@ WndTabs：用于显示打开过的源文件，并将源程序用Tab页面来管�
 VC6LineNumberAddin ：VC6.0显示行号插件
 astyle：代码批量格式整理插
 MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断点标签等，还可以显示修改的部分
+				-->
 				</p>
 				<p>
 					<a class="btn btn-primary btn-large" href="#myModal" data-toggle="modal">参看全部 »</a>
@@ -92,7 +94,8 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 								<h4 class="modal-title" id="myModalLabel">News</h4>
 							</div>
-							<div class="modal-body">
+							<div class="modal-body" id="modalContent">
+							<!--
 								1. IDE：钟情于VC++6.0，但是也感觉Visual Studio2008,2010的强.可能迟早得转到VS高版本上来。在安装VC++6.0的时候记得安装sp6补丁和msdn（MSDN_1.5_精简安装)
 								<br/>
 								2. 辅助
@@ -101,6 +104,7 @@ WndTabs：用于显示打开过的源文件，并将源程序用Tab页面来管�
 VC6LineNumberAddin ：VC6.0显示行号插件
 astyle：代码批量格式整理插
 MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断点标签等，还可以显示修改的部分
+							-->
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -129,12 +133,15 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 
 			</div>
 			<div id="discuss" style="overflow: auto;height:320px;border:2px solid;border-radius:10px;">
+				
 				<a href="#">Ontime</a>
 				|
 				<a href="#">Hot</a>
 				|
 				<a href="#">People you are following</a>
 				<br/>
+
+				<!--
 				<div class="media">
 					<div class="media-left">
 						<a href="#">
@@ -197,6 +204,7 @@ MetalScroll：把vs的进度条换成一个代码的预览图，可以看到断�
 							<img class="media-object" style="width:40px" src="http://f.hiphotos.baidu.com/image/pic/item/c8177f3e6709c93db586cdf19c3df8dcd1005444.jpg" alt="..."></a>
 					</div>
 				</div>
+				-->
 				<br/>
 			</div>
 		</div>
