@@ -270,7 +270,7 @@ function authFun(options, callback) {
 //LMX, against html injection attack
 function parse(msg_text){
     var msg=msg_text
-    return msg.replace(/</g,"&lt").replace(/>/g,"&gt");
+    return msg.replace(/</g,"&lt").replace(/>/g,"&gt").replace(/&/g,"&amp");
 }
 // demo 中输出代码
 function showLog(msg_text, at) {
